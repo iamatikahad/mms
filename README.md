@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Mess Management System
 
 Full-stack mess management for a shared mess: members, daily lunch/dinner requests with cutoff rules, guest meals, bazar/food expenses, monthly bills with member allocation, deposits, other charges, financial engine, reports, monthly closing with lock/reopen, notifications, audit logs, RBAC — backed by **Oracle Database 12c (12.1)** via `node-oracledb` Thin Mode.
@@ -118,3 +119,6 @@ See `TESTING_REPORT.md` §Known limitations.
 - Login `INVALID_CREDENTIALS` → check username case and that the user `STATUS='ACTIVE'`.
 - `MONTH_CLOSED` on save → the month is closed; reopen it first (audited).
 - Port 4001 busy → change `PORT` in `backend/.env`.
+=======
+# mms
+>>>>>>> 2050e4991a17794a5e993ebc61ee63a8e0043469
