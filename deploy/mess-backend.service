@@ -1,0 +1,15 @@
+[Unit]
+Description=Mess Management System backend
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/mess/backend
+EnvironmentFile=/opt/mess/backend/.env
+ExecStart=/usr/bin/node dist/index.js
+Restart=always
+RestartSec=5
+User=root
+
+[Install]
+WantedBy=multi-user.target

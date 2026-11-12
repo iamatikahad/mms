@@ -1,0 +1,150 @@
+{
+  "startedAt": "2026-11-12T16:53:33.102Z",
+  "deleted": {
+    "msg_deleted_for": {
+      "table": "MESSAGE_DELETED_FOR",
+      "before": 8,
+      "after": 0
+    },
+    "msg_reactions": {
+      "table": "MESSAGE_REACTIONS",
+      "before": 2,
+      "after": 0
+    },
+    "msg_receipts": {
+      "table": "MESSAGE_RECEIPTS",
+      "before": 58,
+      "after": 0
+    },
+    "messages": {
+      "table": "MESSAGES",
+      "before": 35,
+      "after": 0
+    },
+    "legacy_chat_messages": {
+      "table": "CHAT_MESSAGES",
+      "before": 13,
+      "after": 0
+    },
+    "direct_participants": {
+      "table": "CONVERSATION_PARTICIPANTS",
+      "before": 9,
+      "after": 3
+    },
+    "direct_conversations": {
+      "table": "CONVERSATIONS",
+      "before": 3,
+      "after": 1
+    },
+    "poll_votes": {
+      "table": "POLL_VOTES",
+      "before": 2,
+      "after": 0
+    },
+    "poll_options": {
+      "table": "POLL_OPTIONS",
+      "before": 2,
+      "after": 0
+    },
+    "polls": {
+      "table": "POLLS",
+      "before": 1,
+      "after": 0
+    },
+    "notifications": {
+      "table": "NOTIFICATIONS",
+      "before": 0,
+      "after": 0
+    },
+    "reminder_log": {
+      "table": "MEAL_REMINDER_LOG",
+      "before": 0,
+      "after": 0
+    },
+    "bill_allocations": {
+      "table": "BILL_ALLOCATIONS",
+      "before": 1,
+      "after": 0
+    },
+    "monthly_bills": {
+      "table": "MONTHLY_BILLS",
+      "before": 1,
+      "after": 0
+    },
+    "payments": {
+      "table": "PAYMENTS",
+      "before": 0,
+      "after": 0
+    },
+    "deposits": {
+      "table": "DEPOSITS",
+      "before": 1,
+      "after": 0
+    },
+    "other_charges": {
+      "table": "OTHER_CHARGES",
+      "before": 0,
+      "after": 0
+    },
+    "member_monthly_summary": {
+      "table": "MEMBER_MONTHLY_SUMMARY",
+      "before": 1,
+      "after": 0
+    },
+    "monthly_accounts": {
+      "table": "MONTHLY_ACCOUNTS",
+      "before": 1,
+      "after": 0
+    },
+    "monthly_closings": {
+      "table": "MONTHLY_CLOSINGS",
+      "before": 1,
+      "after": 0
+    },
+    "meal_entries": {
+      "table": "MEAL_ENTRIES",
+      "before": 6,
+      "after": 0
+    },
+    "guest_meals": {
+      "table": "GUEST_MEALS",
+      "before": 8,
+      "after": 0
+    },
+    "meal_requests": {
+      "table": "MEAL_REQUESTS",
+      "before": 5,
+      "after": 0
+    },
+    "bazar_expenses": {
+      "table": "BAZAR_EXPENSES",
+      "before": 2,
+      "after": 0
+    },
+    "uploaded_files": {
+      "table": "UPLOADED_FILES",
+      "before": 11,
+      "after": 0
+    }
+  },
+  "preserved": {
+    "USERS": 7,
+    "MEMBERS": 6,
+    "ROLES": 3,
+    "PERMISSIONS": 23,
+    "ROLE_PERMISSIONS": 48,
+    "USER_PERMISSIONS": 0,
+    "SYSTEM_SETTINGS": 13,
+    "USER_NOTIFICATION_PREFS": 1,
+    "CHAT_THEME_PREFS": 2,
+    "CHAT_MUTES": 1,
+    "EXPENSE_CATEGORIES": 9,
+    "BILL_CATEGORIES": 9,
+    "ADMIN_PROFILES": 0,
+    "AUDIT_LOGS": 0,
+    "CONVERSATIONS": 1,
+    "CONVERSATION_PARTICIPANTS": 3
+  },
+  "errors": [],
+  "finishedAt": "2026-11-12T16:53:33.542Z"
+}
