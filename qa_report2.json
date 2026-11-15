@@ -1,0 +1,722 @@
+[
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/members",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/meals",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/meal-requests",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/guests",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/bazar",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/deposits",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/expenses",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/bills",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/reports",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/chat",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/polls",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/flowchart",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/closing",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/notifications",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "desktop",
+  "page": "/admin/profile",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/members",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/meals",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/meal-requests",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/guests",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/bazar",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/deposits",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/expenses",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/bills",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/reports",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/chat",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/polls",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/flowchart",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/closing",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/notifications",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "mobile",
+  "page": "/admin/profile",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/members",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/meals",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/meal-requests",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/guests",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/bazar",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/deposits",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/expenses",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/bills",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/reports",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/chat",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/polls",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/flowchart",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/closing",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/notifications",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "messadmin",
+  "vp": "tablet",
+  "page": "/admin/profile",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member/meals",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member/chat",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member/polls",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member/expenses",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member/reports",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member/notifications",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "desktop",
+  "page": "/member/profile",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member/meals",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member/chat",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member/polls",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member/expenses",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member/reports",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member/notifications",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "mobile",
+  "page": "/member/profile",
+  "hs": true,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member/meals",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member/chat",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member/polls",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member/expenses",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member/reports",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member/notifications",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ },
+ {
+  "role": "member",
+  "vp": "tablet",
+  "page": "/member/profile",
+  "hs": false,
+  "bl": false,
+  "errs": [
+   "c:Failed to load resource: the server responded with a status of 404 (Not Found)"
+  ]
+ }
+]

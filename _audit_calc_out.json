@@ -1,0 +1,215 @@
+{
+ "months": [
+  "2026-11"
+ ],
+ "invariants": {
+  "dupActiveMealEntries": [],
+  "bazarMismatches": [],
+  "bazarMismatchCount": 0,
+  "billAllocMismatches": [],
+  "paymentStatusMismatches": [],
+  "orphanReversals": [],
+  "members": [
+   {
+    "MEMBER_ID": 1,
+    "MEMBER_CODE": "M001",
+    "FULL_NAME": "Test Member",
+    "STATUS": "ACTIVE",
+    "JOINING_DATE": null,
+    "LEAVING_DATE": null
+   },
+   {
+    "MEMBER_ID": 2,
+    "MEMBER_CODE": "M002",
+    "FULL_NAME": "Md Atikul Islam",
+    "STATUS": "ACTIVE",
+    "JOINING_DATE": "2026-11-12T00:00:00.000Z",
+    "LEAVING_DATE": null
+   },
+   {
+    "MEMBER_ID": 3,
+    "MEMBER_CODE": "M003",
+    "FULL_NAME": "Nayeem Abdullah Abid",
+    "STATUS": "ACTIVE",
+    "JOINING_DATE": "2026-11-12T00:00:00.000Z",
+    "LEAVING_DATE": null
+   },
+   {
+    "MEMBER_ID": 4,
+    "MEMBER_CODE": "M004",
+    "FULL_NAME": "Dipankar Roy",
+    "STATUS": "ACTIVE",
+    "JOINING_DATE": "2026-11-12T00:00:00.000Z",
+    "LEAVING_DATE": null
+   },
+   {
+    "MEMBER_ID": 5,
+    "MEMBER_CODE": "M005",
+    "FULL_NAME": "Md Al-Shahariyar Sifat",
+    "STATUS": "ACTIVE",
+    "JOINING_DATE": "2026-11-12T00:00:00.000Z",
+    "LEAVING_DATE": null
+   },
+   {
+    "MEMBER_ID": 6,
+    "MEMBER_CODE": "M006",
+    "FULL_NAME": "Debashis Paul ",
+    "STATUS": "ACTIVE",
+    "JOINING_DATE": "2026-11-12T00:00:00.000Z",
+    "LEAVING_DATE": null
+   }
+  ]
+ },
+ "monthsDetail": {
+  "2026-11": {
+   "regularMeals": 3,
+   "guestMeals": 23,
+   "totalMeals": 26,
+   "foodExpense": 2480,
+   "mealRate": 95.384615,
+   "mealRateOracle": 95.3846,
+   "totalBills": 3000,
+   "totalDeposits": 2000,
+   "totalCharges": 0,
+   "bazarAll": 2480,
+   "bazarNonFood": 0,
+   "members": [
+    {
+     "mid": 1,
+     "code": "M001",
+     "name": "Test Member",
+     "mstatus": "ACTIVE",
+     "reg": 3,
+     "guest": 17,
+     "meals": 20,
+     "food": 1907.69,
+     "alloc": 3000,
+     "chg": 0,
+     "dep": 2000,
+     "payable": 4907.69,
+     "balance": -2907.69
+    },
+    {
+     "mid": 2,
+     "code": "M002",
+     "name": "Md Atikul Islam",
+     "mstatus": "ACTIVE",
+     "reg": 0,
+     "guest": 6,
+     "meals": 6,
+     "food": 572.31,
+     "alloc": 0,
+     "chg": 0,
+     "dep": 0,
+     "payable": 572.31,
+     "balance": -572.31
+    },
+    {
+     "mid": 6,
+     "code": "M006",
+     "name": "Debashis Paul ",
+     "mstatus": "ACTIVE",
+     "reg": 0,
+     "guest": 0,
+     "meals": 0,
+     "food": 0,
+     "alloc": 0,
+     "chg": 0,
+     "dep": 0,
+     "payable": 0,
+     "balance": 0
+    },
+    {
+     "mid": 4,
+     "code": "M004",
+     "name": "Dipankar Roy",
+     "mstatus": "ACTIVE",
+     "reg": 0,
+     "guest": 0,
+     "meals": 0,
+     "food": 0,
+     "alloc": 0,
+     "chg": 0,
+     "dep": 0,
+     "payable": 0,
+     "balance": 0
+    },
+    {
+     "mid": 5,
+     "code": "M005",
+     "name": "Md Al-Shahariyar Sifat",
+     "mstatus": "ACTIVE",
+     "reg": 0,
+     "guest": 0,
+     "meals": 0,
+     "food": 0,
+     "alloc": 0,
+     "chg": 0,
+     "dep": 0,
+     "payable": 0,
+     "balance": 0
+    },
+    {
+     "mid": 3,
+     "code": "M003",
+     "name": "Nayeem Abdullah Abid",
+     "mstatus": "ACTIVE",
+     "reg": 0,
+     "guest": 0,
+     "meals": 0,
+     "food": 0,
+     "alloc": 0,
+     "chg": 0,
+     "dep": 0,
+     "payable": 0,
+     "balance": 0
+    }
+   ],
+   "totals": {
+    "food": 2480,
+    "alloc": 3000,
+    "chg": 0,
+    "payable": 5480,
+    "dep": 2000,
+    "bal": -3480,
+    "meals": 26
+   },
+   "foodDrift": 0,
+   "mealsDrift": 0
+  }
+ },
+ "monthlyAccounts": [
+  {
+   "ACCOUNT_ID": 1,
+   "ACCOUNT_MONTH": "2026-11",
+   "MEAL_RATE": 733.3333,
+   "STATUS": "OPEN",
+   "CREATED_AT": "2026-11-12T06:54:59.006Z",
+   "UPDATED_AT": "2026-11-12T06:55:05.463Z"
+  }
+ ],
+ "closings": [
+  {
+   "ACCOUNT_MONTH": "2026-11",
+   "STATUS": "REOPENED",
+   "CLOSED_AT": "2026-11-12T06:54:59.111Z",
+   "REOPEN_COUNT": 1
+  }
+ ],
+ "memberSummaries": [
+  {
+   "SUMMARY_ID": 1,
+   "ACCOUNT_MONTH": "2026-11",
+   "MEMBER_ID": 1,
+   "REGULAR_MEALS": 1,
+   "GUEST_MEALS": 2,
+   "FOOD_COST": 2200,
+   "BILL_ALLOCATION": 3000,
+   "OTHER_CHARGES": 0,
+   "TOTAL_PAYABLE": 5200,
+   "TOTAL_DEPOSITS": 2000,
+   "BALANCE": -3200,
+   "UPDATED_AT": "2026-11-12T06:54:59.034Z"
+  }
+ ]
+}

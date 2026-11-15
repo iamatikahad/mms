@@ -1,0 +1,19 @@
+# Cloudflare Tunnel config — copy to %USERPROFILE%\.cloudflared\config.yml
+# after running: cloudflared tunnel login
+#              cloudflared tunnel create attic712
+#              cloudflared tunnel route dns attic712 app.YOUR_DOMAIN.com
+
+tunnel: TUNNEL_ID_HERE          # from `cloudflared tunnel list`
+credentials-file: C:\Users\Atik\.cloudflared\TUNNEL_ID_HERE.json
+
+ingress:
+  # Single public hostname serves frontend + /api + websockets (same origin)
+  - hostname: app.YOUR_DOMAIN.com
+    service: http://localhost:4001
+    originRequest:
+      # keep websocket upgrades + long timeouts for socket.io/chat
+      connectTimeout: 30s
+      noHappyEyeballs: true
+      httpHostHeader: localhost:4001
+  # Catch-all: required by cloudflared
+  - service: http_status:404

@@ -1,0 +1,22 @@
+# /etc/caddy/Caddyfile — replace mess.duckdns.org with your DuckDNS name
+mess.duckdns.org {
+    encode gzip
+
+    # API + websockets → Node backend
+    handle /api/* {
+        reverse_proxy localhost:4002
+    }
+    handle /socket.io/* {
+        reverse_proxy localhost:4002
+    }
+    handle /uploads/* {
+        reverse_proxy localhost:4002
+    }
+
+    # Everything else → built frontend
+    handle {
+        root * /opt/mess/frontend/dist
+        try_files {path} /index.html
+        file_server
+    }
+}

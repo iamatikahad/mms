@@ -1,0 +1,73 @@
+-- ============================================================
+-- PROPOSED CLEANUP SCRIPT — TEST DATA ONLY
+-- STATUS: NOT EXECUTED. Requires explicit approval.
+-- Safe approach: reverse test rows (STATUS='REVERSED') instead
+-- of DELETE where the schema supports it, preserving audit trail.
+-- Run inside one transaction; verify counts; COMMIT or ROLLBACK.
+-- ============================================================
+
+-- ---------- SECTION A: Mess 1 test bazar rows ----------
+-- 14 rows: BAZAR_ID 25-38 (11x 'E2E Rice' 500, 'RTTest' 10,
+-- 'RT1x' 7, 'RT1b'?, 'RT3x' is mess3). All PAYMENT_SOURCE='COMMON',
+-- CREATED_BY=1 (superadmin/test harness), ACCOUNT_MONTH='2026-11'.
+-- Financial impact: inflates Mess 1 Nov food expense by ~5,517 BDT.
+-- No auto-credit deposits exist (verified: AUTO DEPS = none).
+--
+-- SELECT BAZAR_ID, ITEM_NAME, TOTAL_PRICE, MESS_ID, ACCOUNT_MONTH, STATUS
+--   FROM BAZAR_EXPENSES
+--  WHERE ITEM_NAME IN ('E2E Rice','RTTest','RT1x','RT1b','RT3x')
+--    OR (MESS_ID=1 AND CREATED_BY=1 AND ACCOUNT_MONTH='2026-11' AND ITEM_NAME LIKE 'RT%');
+--
+-- Recommended (reversible):
+-- UPDATE BAZAR_EXPENSES SET STATUS='REVERSED', UPDATED_AT=SYSTIMESTAMP
+--  WHERE BAZAR_ID IN (25,26,27,28,29,30,31,32,33,34,35,36,38);
+-- (37 is Mess 3 'RT3x' — include if mess3 is also being cleaned)
+
+-- ---------- SECTION B: Mess 2 (E2ETEST) transactions ----------
+-- DEPOSITS 26-31: 6 x 1000 = 6,000 BDT, MEMBER_ID=21, all 'MANUAL'/CASH,
+-- created by E2E reruns. NOTIFICATIONS for mess2 (6 rows, DEPOSIT type).
+-- MONTHLY_CLOSINGS: IDs 21 (2026-11 CLOSED), 22 (2026-10 REOPENED),
+--   27 (2026-10 CLOSED) — closing history; keep or remove with mess.
+-- MEMBER_MONTHLY_SUMMARY rows for mess2/2026-10 if any.
+--
+-- Recommended order if mess is deactivated permanently:
+-- UPDATE DEPOSITS SET STATUS='REVERSED' WHERE DEPOSIT_ID BETWEEN 26 AND 31 AND MESS_ID=2;
+-- (or delete entire mess subtree — see Section D)
+
+-- ---------- SECTION C: SCALE3/4/5 messes ----------
+-- MESS_LOCATIONS 3,4,5 (ACTIVE) — created for load testing.
+-- Users 23-28 (adm_scale3/4/5, mem_scale3/4/5), MEMBERS 22-24,
+-- MESS_USER_ACCESS 4,5,6, SYSTEM_SETTINGS overrides if any,
+-- CONVERSATIONS group rows per mess.
+-- Zero financial transactions in messes 3-5 except BAZAR_ID 37 (RT3x, mess3).
+
+-- ---------- SECTION D: Full test-mess removal (ONLY if approved) ----------
+-- FK-safe delete order per mess M in (2,3,4,5):
+--   1. CHAT_MESSAGES / MESSAGE_* where CONVERSATION_ID in mess convs
+--   2. CONVERSATION_PARTICIPANTS, CONVERSATIONS (MESS_ID=M)
+--   3. NOTIFICATIONS, TELEGRAM_NOTIFICATIONS (MESS_ID=M)
+--   4. DEPOSITS, BAZAR_EXPENSES, MEAL_ENTRIES, GUEST_MEALS,
+--      OTHER_CHARGES, MONTHLY_BILLS, BILL_ALLOCATIONS,
+--      MEMBER_MONTHLY_SUMMARY, MONTHLY_ACCOUNTS, MONTHLY_CLOSINGS (MESS_ID=M)
+--   5. MESS_USER_ACCESS (MESS_ID=M)
+--   6. MEMBERS where MESS_ID=M  (deletes member rows; users remain)
+--   7. MESS_LOCATIONS where MESS_ID=M
+--   8. USERS 21-28 + ADMIN_PROFILES where applicable (e2e/scale accounts)
+--   9. SYSTEM_SETTINGS rows scoped to those MESS_IDs
+-- NOTE: USERS deletion must respect USER_ID=1 (superadmin) — never touch.
+--
+-- ---------- SECTION E: Disabled 'testmember' ----------
+-- USER_ID=3 / MEMBER_ID=1 (MESS_ID=1, STATUS='LEFT', code M001).
+-- Pre-existing before this project phase; LEFT member of Mess 1.
+-- Recommend KEEP (historical record) or anonymize — do NOT delete
+-- without confirming it is not a genuine former member.
+
+-- ---------- VERIFICATION QUERIES (run before & after) ----------
+-- SELECT COUNT(*) FROM BAZAR_EXPENSES WHERE ITEM_NAME IN ('E2E Rice','RTTest','RT1x','RT1b','RT3x');
+-- SELECT MESS_ID, COUNT(*) FROM DEPOSITS GROUP BY MESS_ID;
+-- SELECT COUNT(*) FROM MESS_LOCATIONS;
+-- SELECT COUNT(*) FROM USERS;
+
+-- ROLLBACK PLAN: wrap Sections A-C updates in a transaction;
+-- for deletes, restore from backups/db_backup_*.json or take a
+-- fresh _db_backup.js snapshot immediately before executing.
