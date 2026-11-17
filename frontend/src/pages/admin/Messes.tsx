@@ -17,6 +17,9 @@ export default function Messes() {
   const [form, setForm] = useState({ messName: '', messCode: '', address: '', contactNumber: '' });
   const [saving, setSaving] = useState(false);
   const [grantSel, setGrantSel] = useState<Record<number, string>>({});
+  const [editing, setEditing] = useState<number | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editSaving, setEditSaving] = useState(false);
 
   const loadAccess = async (mid: number) => {
     try {
@@ -64,6 +67,23 @@ export default function Messes() {
     try { await api.put(`/mess/locations/${m.messId}`, { status: m.status === 'ACTIVE' ? 'INACTIVE' : 'ACTIVE' }); load(); } catch { /* ignore */ }
   };
 
+  const startEdit = (m: Mess) => { setEditing(m.messId); setEditName(m.messName); };
+
+  const saveEdit = async (m: Mess) => {
+    const name = editName.trim();
+    if (name.length < 2) { setError('NAME_TOO_SHORT'); return; }
+    setEditSaving(true); setError('');
+    try {
+      await api.put(`/mess/locations/${m.messId}`, { messName: name });
+      setEditing(null);
+      await load();
+    } catch (e: any) {
+      const code = e.response?.data?.error;
+      setError(code === 'NAME_INVALID' ? 'NAME_INVALID' : code || 'SAVE_FAILED');
+    }
+    setEditSaving(false);
+  };
+
   const grant = async (mid: number) => {
     const uid = Number(grantSel[mid]);
     if (!uid) return;
@@ -105,8 +125,22 @@ export default function Messes() {
            {rows.map(m => (
              <div key={m.messId} className="border border-slate-200 dark:border-slate-700 rounded-lg p-3">
                <div className="flex items-center justify-between flex-wrap gap-2">
-                 <div>
-                   <span className="font-semibold">{m.messName}</span>
+                 <div className="flex items-center gap-2 flex-wrap">
+                   {editing === m.messId ? (
+                     <>
+                       <input className="text-sm font-semibold border border-brand-400 rounded px-2 py-1 bg-white dark:bg-slate-800 text-slate-900 dark:text-white"
+                         value={editName} onChange={e => setEditName(e.target.value)}
+                         onKeyDown={e => { if (e.key === 'Enter') saveEdit(m); if (e.key === 'Escape') setEditing(null); }}
+                         maxLength={120} autoFocus />
+                       <button className="btn-primary !px-2 !py-1 text-xs" onClick={() => saveEdit(m)} disabled={editSaving}>{editSaving ? '…' : t('save', 'Save')}</button>
+                       <button className="btn-ghost !px-2 !py-1 text-xs" onClick={() => setEditing(null)} disabled={editSaving}>{t('cancel', 'Cancel')}</button>
+                     </>
+                   ) : (
+                     <>
+                       <span className="font-semibold">{m.messName}</span>
+                       <button className="btn-ghost !px-1.5 !py-0.5 text-xs" title={t('rename', 'Rename')} onClick={() => startEdit(m)}>✏️</button>
+                     </>
+                   )}
                    <span className="text-xs text-slate-500 ml-2">{m.messCode}</span>
                    {m.address && <span className="text-xs text-slate-500 ml-2">{m.address}</span>}
                  </div>

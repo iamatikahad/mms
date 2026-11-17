@@ -64,6 +64,15 @@ export default function Layout() {
     return () => clearInterval(id);
   }, []);
 
+  // Live mess-rename sync: refresh session (mess list + display name) when
+  // the backend broadcasts mess:renamed for this user's mess or as super admin.
+  useEffect(() => {
+    const s = getSocket();
+    const onRenamed = () => { refresh().catch(() => {}); };
+    s.on('mess:renamed', onRenamed);
+    return () => { s.off('mess:renamed', onRenamed); };
+  }, [refresh]);
+
   // unread chat total (group + DMs) — poll + socket-driven refresh
   useEffect(() => {
     if (!user) return;
