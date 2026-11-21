@@ -6,42 +6,43 @@ import { api } from '../api';
 import { Badge } from './ui';
 import Logo from './Logo';
 import { getSocket } from '../socket';
+import { Icon, type IconName } from './icons';
 import { playMessageSound, playReminderSound, soundPrefs, notifPrefs } from '../sound';
 
-interface NavItem { to: string; label: string; icon: string; perm?: string }
+interface NavItem { to: string; label: string; icon: IconName; perm?: string }
 
 const adminNav: NavItem[] = [
-  { to: '/admin', label: 'dashboard', icon: '📊' },
-  { to: '/admin/members', label: 'memberManagement', icon: '👥', perm: 'members.view' },
-  { to: '/admin/meals', label: 'mealManagement', icon: '🍽️', perm: 'meals.view' },
-  { to: '/admin/meal-requests', label: 'mealRequests', icon: '📋', perm: 'meals.view' },
-  { to: '/admin/guests', label: 'guestMeals', icon: '🧑‍🤝‍🧑', perm: 'guests.manage' },
-  { to: '/admin/bazar', label: 'bazar', icon: '🛒', perm: 'bazar.manage' },
-  { to: '/admin/deposits', label: 'deposits', icon: '💰', perm: 'deposits.manage' },
-  { to: '/admin/expenses', label: 'expenses', icon: '🧾', perm: 'expenses.manage' },
-  { to: '/admin/bills', label: 'monthlyBills', icon: '🧮', perm: 'bills.manage' },
-  { to: '/admin/reports', label: 'reports', icon: '📈', perm: 'reports.view' },
-  { to: '/admin/chat', label: 'communityChat', icon: '💬' },
-  { to: '/admin/polls', label: 'polls', icon: '🗳️' },
-  { to: '/admin/flowchart', label: 'flowchart', icon: '🔀', perm: 'flowchart.view' },
-  { to: '/admin/closing', label: 'monthlyClosing', icon: '🔒', perm: 'closing.view' },
-  { to: '/admin/notifications', label: 'notifications', icon: '🔔', perm: 'notifications.manage' },
-  { to: '/admin/messes', label: 'messManagement', icon: '🏠', perm: 'settings.manage' },
-  { to: '/admin/admins', label: 'adminManagement', icon: '🛡️', perm: 'admins.manage' },
-  { to: '/admin/audit', label: 'auditLogs', icon: '📜', perm: 'audit.view' },
-  { to: '/admin/settings', label: 'settings', icon: '⚙️', perm: 'settings.manage' },
-  { to: '/admin/profile', label: 'profile', icon: '👤' },
+  { to: '/admin', label: 'dashboard', icon: 'dashboard' },
+  { to: '/admin/members', label: 'memberManagement', icon: 'members', perm: 'members.view' },
+  { to: '/admin/meals', label: 'mealManagement', icon: 'meals', perm: 'meals.view' },
+  { to: '/admin/meal-requests', label: 'mealRequests', icon: 'mealRequests', perm: 'meals.view' },
+  { to: '/admin/guests', label: 'guestMeals', icon: 'guests', perm: 'guests.manage' },
+  { to: '/admin/bazar', label: 'bazar', icon: 'bazar', perm: 'bazar.manage' },
+  { to: '/admin/deposits', label: 'deposits', icon: 'deposits', perm: 'deposits.manage' },
+  { to: '/admin/expenses', label: 'expenses', icon: 'expenses', perm: 'expenses.manage' },
+  { to: '/admin/bills', label: 'monthlyBills', icon: 'bills', perm: 'bills.manage' },
+  { to: '/admin/reports', label: 'reports', icon: 'reports', perm: 'reports.view' },
+  { to: '/admin/chat', label: 'communityChat', icon: 'chat' },
+  { to: '/admin/polls', label: 'polls', icon: 'polls' },
+  { to: '/admin/flowchart', label: 'flowchart', icon: 'flowchart', perm: 'flowchart.view' },
+  { to: '/admin/closing', label: 'monthlyClosing', icon: 'closing', perm: 'closing.view' },
+  { to: '/admin/notifications', label: 'notifications', icon: 'notifications', perm: 'notifications.manage' },
+  { to: '/admin/messes', label: 'messManagement', icon: 'messes', perm: 'settings.manage' },
+  { to: '/admin/admins', label: 'adminManagement', icon: 'admins', perm: 'admins.manage' },
+  { to: '/admin/audit', label: 'auditLogs', icon: 'audit', perm: 'audit.view' },
+  { to: '/admin/settings', label: 'settings', icon: 'settings', perm: 'settings.manage' },
+  { to: '/admin/profile', label: 'profile', icon: 'profile' },
 ];
 
 const memberNav: NavItem[] = [
-  { to: '/member', label: 'myDashboard', icon: '📊' },
-  { to: '/member/meals', label: 'mealRequest', icon: '🍽️' },
-  { to: '/member/chat', label: 'communityChat', icon: '💬' },
-  { to: '/member/polls', label: 'polls', icon: '🗳️' },
-  { to: '/member/expenses', label: 'myExpenses', icon: '🧾' },
-  { to: '/member/reports', label: 'myReports', icon: '📈' },
-  { to: '/member/notifications', label: 'notifications', icon: '🔔' },
-  { to: '/member/profile', label: 'myProfile', icon: '👤' },
+  { to: '/member', label: 'myDashboard', icon: 'dashboard' },
+  { to: '/member/meals', label: 'mealRequest', icon: 'meals' },
+  { to: '/member/chat', label: 'communityChat', icon: 'chat' },
+  { to: '/member/polls', label: 'polls', icon: 'polls' },
+  { to: '/member/expenses', label: 'myExpenses', icon: 'expenses' },
+  { to: '/member/reports', label: 'myReports', icon: 'reports' },
+  { to: '/member/notifications', label: 'notifications', icon: 'notifications' },
+  { to: '/member/profile', label: 'myProfile', icon: 'profile' },
 ];
 
 export default function Layout() {
@@ -144,7 +145,7 @@ export default function Layout() {
               `flex items-center gap-3 px-4 py-2.5 text-sm transition ${
                 isActive ? 'bg-brand-50 text-brand-700 dark:bg-brand-950/50 dark:text-brand-300 font-medium'
                          : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'}`}>
-            <span className="w-5 text-center">{n.icon}</span>{t(n.label)}
+            <span className="w-5 inline-flex justify-center"><Icon name={n.icon} size={20} /></span>{t(n.label)}
             {n.to.endsWith('/chat') && chatUnread > 0 && <Badge color="red">{chatUnread}</Badge>}
           </NavLink>
         ))}
@@ -179,7 +180,7 @@ export default function Layout() {
         {/* topbar */}
         <header className="sticky top-0 z-40 bg-white/90 dark:bg-slate-900/90 backdrop-blur border-b border-slate-200 dark:border-slate-800">
           <div className="flex items-center gap-1 min-[480px]:gap-2 px-4 h-14">
-            <button className="btn-ghost md:hidden !px-2" onClick={() => setOpen(true)}>☰</button>
+            <button className="btn-ghost md:hidden !px-2" onClick={() => setOpen(true)} aria-label="menu"><Icon name="menu" size={20} /></button>
             <div className="md:hidden flex items-center gap-2">
               <span className="hidden min-[400px]:inline-flex"><Logo size={44} /></span>
               {user?.role === 'SUPER_ADMIN' && (user?.messes?.length ?? 0) > 1 ? (
@@ -216,10 +217,10 @@ export default function Layout() {
               {i18n.language === 'bn' ? t('english') : t('bangla')}
             </button>
             <button className="btn-ghost !px-2 min-[480px]:!px-3" onClick={toggleTheme} title={theme === 'light' ? t('darkMode') : t('lightMode')}>
-              {theme === 'light' ? '🌙' : '☀️'}
+              <Icon name={theme === 'light' ? 'moon' : 'sun'} size={18} />
             </button>
             <button className="btn-ghost !px-2 min-[480px]:!px-3 relative" onClick={() => navigate(`${base}/notifications`)}>
-              🔔 {unread > 0 && <Badge color="red">{unread}</Badge>}
+              <Icon name="notifications" size={18} className="inline-block align-[-3px]" /> {unread > 0 && <Badge color="red">{unread}</Badge>}
             </button>
             <button className="btn-ghost !px-2 min-[480px]:!px-3" onClick={logout}>{t('logout')}</button>
           </div>

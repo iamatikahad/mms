@@ -4,6 +4,7 @@ import { Card, Input, Field, Modal, Badge, Spinner } from '../../components/ui';
 import { api } from '../../api';
 import { useApp } from '../../store';
 import { notifPrefs } from '../../sound';
+import { Icon } from '../../components/icons';
 
 export default function Profile() {
   const { t } = useTranslation();
@@ -108,9 +109,9 @@ export default function Profile() {
         </div>
         <div className="mt-4 pt-3 border-t border-slate-200 dark:border-slate-800">
           {browserNotif === 'granted' ? (
-            <p className="text-xs text-emerald-600">✅ {t('browserNotifOn')}</p>
+            <p className="text-xs text-emerald-600 inline-flex items-center gap-1"><Icon name='check' size={13}/> {t('browserNotifOn')}</p>
           ) : browserNotif === 'denied' ? (
-            <p className="text-xs text-amber-600">⚠️ {t('browserNotifDenied')}</p>
+            <p className="text-xs text-amber-600 inline-flex items-center gap-1"><Icon name='circle' size={12}/> {t('browserNotifDenied')}</p>
           ) : (
             <button className="btn-secondary !py-1.5 text-xs" onClick={enableBrowserNotif}>{t('enableBrowserNotif')}</button>
           )}

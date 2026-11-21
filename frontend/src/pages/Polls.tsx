@@ -5,6 +5,7 @@ import { useApp } from '../store';
 import { getSocket } from '../socket';
 import { playWelcomeSound, playConfirmSound } from '../sound';
 import { Card, Spinner, Field, Input, Modal, Badge } from '../components/ui';
+import { Icon } from '../components/icons';
 
 function fmtDT(ts: any) {
   if (!ts) return '';
@@ -84,7 +85,7 @@ export default function Polls() {
         <div>
           <div className="font-semibold text-slate-800 dark:text-slate-100">{p.QUESTION}</div>
           <div className="text-xs text-slate-400 mt-1">
-            {p.isOpen ? `🟢 ${t('activePolls')}` : `🔴 ${t('pollClosed')}`}
+            {p.isOpen ? <span className='inline-flex items-center gap-1'><Icon name='circle' size={10}/> {t('activePolls')}</span> : <span className='inline-flex items-center gap-1'><Icon name='circle' size={10}/> {t('pollClosed')}</span>}
             {p.CLOSES_AT ? ` · ${t('pollEndsAt')} ${fmtDT(p.CLOSES_AT)}` : ''}
             {' · '}{p.totalVotes}/{p.eligible} {t('votes')}
           </div>
@@ -92,7 +93,7 @@ export default function Polls() {
         {isAdmin && (
           <div className="flex gap-1 shrink-0">
             {p.isOpen && <button className="btn-ghost !px-2 !py-1 text-xs" onClick={() => closePoll(p)}>{t('closePoll')}</button>}
-            <button className="btn-ghost !px-2 !py-1 text-xs text-red-500" onClick={() => deletePoll(p)}>🗑</button>
+            <button className="btn-ghost !px-2 !py-1 text-xs text-red-500" onClick={() => deletePoll(p)}><Icon name="delete" size={14} /></button>
           </div>
         )}
       </div>
@@ -115,7 +116,7 @@ export default function Polls() {
               )}
               <div className="relative flex items-center justify-between gap-2">
                 <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                  {o.OPTION_TEXT} {mine && <span className="text-brand-600 text-xs">✓ {t('voted')}</span>}
+                  {o.OPTION_TEXT} {mine && <span className="text-brand-600 text-xs inline-flex items-center gap-0.5"><Icon name="check" size={12}/> {t('voted')}</span>}
                 </span>
                 {(p.myVote || !p.isOpen) && (
                   <span className="text-xs font-bold text-brand-700 dark:text-brand-300 shrink-0">{o.pct}% · {o.VOTES}</span>

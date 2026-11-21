@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { Card, Spinner, Select, DataTable, Badge, Modal } from '../../components/ui';
 import { api, fmtMoney, fmtDate, currentMonth, monthOptions } from '../../api';
 import { useApp } from '../../store';
+import { Icon } from '../../components/icons';
 
 export default function Closing() {
   const { t } = useTranslation();
@@ -72,7 +73,7 @@ export default function Closing() {
               {Object.entries(validation.counts).map(([k, v]) => <span key={k} className="mr-3">{k}: <b>{String(v)}</b></span>)}
             </div>
             {validation.issues?.length > 0 && (
-              <div className="mt-2 text-sm text-amber-600">⚠ {validation.issues.join(', ')}</div>
+              <div className="mt-2 text-sm text-amber-600"><span className='inline-flex items-center gap-1'><Icon name='circle' size={12}/> {validation.issues.join(', ')}</span></div>
             )}
           </Card>
 

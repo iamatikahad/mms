@@ -12,6 +12,7 @@
     "axios": "^1.7.2",
     "i18next": "^23.11.5",
     "i18next-browser-languagedetector": "^8.0.0",
+    "lucide-react": "^0.544.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^15.0.1",

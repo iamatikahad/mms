@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../../api';
 import { Card, Input, Badge } from '../../components/ui';
+import { Icon } from '../../components/icons';
 import { useTranslation } from 'react-i18next';
 
 interface Mess { messId: number; messName: string; messCode: string; address?: string; contactNumber?: string; status: string; }
@@ -138,7 +139,7 @@ export default function Messes() {
                    ) : (
                      <>
                        <span className="font-semibold">{m.messName}</span>
-                       <button className="btn-ghost !px-1.5 !py-0.5 text-xs" title={t('rename', 'Rename')} onClick={() => startEdit(m)}>✏️</button>
+                       <button className="btn-ghost !px-1.5 !py-0.5 text-xs" title={t('rename', 'Rename')} onClick={() => startEdit(m)}><Icon name="edit" size={14} /></button>
                      </>
                    )}
                    <span className="text-xs text-slate-500 ml-2">{m.messCode}</span>
@@ -155,7 +156,7 @@ export default function Messes() {
                    {(access[m.messId] || []).filter(a => a.STATUS === 'ACTIVE').map(a => (
                      <span key={a.USER_ID} className="inline-flex items-center gap-1 text-xs bg-slate-100 dark:bg-slate-800 rounded px-2 py-0.5">
                        {a.FULL_NAME || a.USERNAME}
-                       <button className="text-red-500" onClick={() => revoke(m.messId, a.USER_ID)}>✕</button>
+                       <button className="text-red-500" onClick={() => revoke(m.messId, a.USER_ID)}><Icon name="close" size={14} /></button>
                      </span>
                    ))}
                    {(access[m.messId] || []).filter(a => a.STATUS === 'ACTIVE').length === 0 &&

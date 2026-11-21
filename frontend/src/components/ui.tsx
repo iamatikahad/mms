@@ -1,5 +1,6 @@
 import React, { useState, ReactNode } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Icon } from './icons';
 
 export function Card({ title, children, actions, className = '' }: { title?: string; children: ReactNode; actions?: ReactNode; className?: string }) {
   return (
@@ -65,7 +66,7 @@ export function Modal({ open, onClose, title, children, wide }: { open: boolean;
       <div className={`card w-full ${wide ? 'max-w-3xl' : 'max-w-lg'} max-h-[90vh] overflow-y-auto`} onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800">
           <h3 className="font-semibold">{title}</h3>
-          <button className="btn-ghost !px-2" onClick={onClose}>✕</button>
+          <button className="btn-ghost !px-2" onClick={onClose} aria-label="close"><Icon name="close" size={18} /></button>
         </div>
         <div className="p-4">{children}</div>
       </div>

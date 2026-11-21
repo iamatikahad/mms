@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useApp } from '../store';
 import Logo from '../components/Logo';
+import { Icon } from '../components/icons';
 
 export default function Login() {
   const { t } = useTranslation();
@@ -109,7 +110,7 @@ export default function Login() {
             <div className="lp-field">
               <label htmlFor="li-identifier">{t('emailOrPhone')}</label>
               <div className="lp-input-wrap">
-                <span className="lp-input-icon">👤</span>
+                <span className="lp-input-icon"><Icon name="user" size={17} /></span>
                 <input
                   id="li-identifier"
                   value={identifier}
@@ -123,7 +124,7 @@ export default function Login() {
             <div className="lp-field">
               <label htmlFor="li-password">{t('password')}</label>
               <div className="lp-input-wrap">
-                <span className="lp-input-icon">🔒</span>
+                <span className="lp-input-icon"><Icon name="lock" size={17} /></span>
                 <input
                   id="li-password"
                   type={show ? 'text' : 'password'}
@@ -134,7 +135,7 @@ export default function Login() {
                 />
                 <button type="button" aria-label="toggle password" className="lp-pw-toggle"
                   onClick={() => setShow(s => !s)}>
-                  {show ? '🙈' : '👁️'}
+                  {show ? <Icon name="eyeOff" size={17} /> : <Icon name="eye" size={17} />}
                 </button>
               </div>
             </div>

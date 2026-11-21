@@ -4,6 +4,7 @@ import { Card, Spinner, Select, Input, Field, Modal, DataTable, Pagination, Badg
 import { api, fmtDate, fmtTime, downloadCSV } from '../../api';
 import { useApp } from '../../store';
 import { useMessRefresh } from '../../realtime';
+import { Icon } from '../../components/icons';
 
 export default function Meals() {
   const { t } = useTranslation();
@@ -71,7 +72,7 @@ export default function Meals() {
           <h1 className="page-title">{t('mealManagement')}</h1>
           {(mealTimes.lunch || mealTimes.dinner) && (
             <div className="text-xs text-slate-500 mt-0.5">
-              🍽️ {t('lunch')}: {fmtTime(mealTimes.lunch || '')} · {t('dinner')}: {fmtTime(mealTimes.dinner || '')}
+              <span className='inline-flex items-center gap-1'><Icon name='meals' size={13}/> {t('lunch')}: {fmtTime(mealTimes.lunch || '')} · {t('dinner')}: {fmtTime(mealTimes.dinner || '')}</span>
             </div>
           )}
         </div>

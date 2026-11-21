@@ -3448,3 +3448,10 @@ AggregateError [ECONNREFUSED]:
 [2m7:57:13 PM[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Layout.tsx, /src/index.css[22m
 [2m7:57:33 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/i18n.ts[22m
 [2m7:57:33 PM[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/i18n.ts[22m
+[2m9:37:43 PM[22m [31m[1m[vite][22m[39m [31mws proxy error:[39m
+Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:221:20)
+[2m9:37:44 PM[22m [31m[1m[vite][22m[39m [31mws proxy error:[39m
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1492:18)
+    at afterConnectMultiple (node:net:2161:7)

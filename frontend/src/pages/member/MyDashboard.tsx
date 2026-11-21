@@ -4,6 +4,7 @@ import { Card, Spinner, Select } from '../../components/ui';
 import { api, fmtMoney, fmtDate, fmtTime, currentMonth, monthOptions } from '../../api';
 import { useApp } from '../../store';
 import { useMessRefresh } from '../../realtime';
+import { Icon } from '../../components/icons';
 
 export default function MyDashboard() {
   const { t } = useTranslation();
@@ -46,8 +47,8 @@ export default function MyDashboard() {
           <h1 className="page-title">{t('myDashboard')} — {user?.fullName}</h1>
           {(mealTimes.lunch || mealTimes.dinner || activePolls > 0) && (
             <div className="text-xs text-slate-500 mt-0.5">
-              {mealTimes.lunch || mealTimes.dinner ? `🍽️ ${t('lunch')}: ${fmtTime(mealTimes.lunch || '')} · ${t('dinner')}: ${fmtTime(mealTimes.dinner || '')}` : ''}
-              {activePolls > 0 && ` · 🗳️ ${activePolls} ${t('activePolls')}`}
+              {mealTimes.lunch || mealTimes.dinner ? <span className='inline-flex items-center gap-1'><Icon name='meals' size={13}/> {t('lunch')}: {fmtTime(mealTimes.lunch || '')} · {t('dinner')}: {fmtTime(mealTimes.dinner || '')}</span> : ''}
+              {activePolls > 0 && <span className='inline-flex items-center gap-1'>· <Icon name='polls' size={13}/> {activePolls} {t('activePolls')}</span>}
             </div>
           )}
         </div>

@@ -6,6 +6,7 @@ import { getSocket } from '../socket';
 import { playMessageSound, playWelcomeSound, playConfirmSound, playReminderSound, soundPrefs, notifPrefs } from '../sound';
 import { Spinner } from '../components/ui';
 import { CHAT_THEMES, resolveTheme } from '../chatThemes';
+import { Icon } from '../components/icons';
 
 const EMOJIS = ['😀','😂','🤣','😊','😍','🥰','😘','😎','🤩','😜','🤔','😴','😢','😭','😡','👍','👎','👏','🙌','🙏','💪','🤝','✌️','❤️','🧡','💛','💚','💙','💜','🖤','💔','✨','⭐','🔥','🎉','🎊','💯','✅','❌','⚽','🏏','🎮','🍽️','☕','🍵','🥗','🍛','🎂','🌙','☀️','🌈','🚀','💡','📌','🗳️','💬','📷','📎','🎁','🏆','💰','😇','🥳','🤗','👋'];
 const QUICK_REACT = ['👍','❤️','😂','😮','😢','🙏','🔥','🎉'];
@@ -59,7 +60,7 @@ function ThemePicker({ theme, onSave, onClose }: { theme: any; onSave: (t: any) 
       <div className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-5" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold text-lg text-slate-800 dark:text-slate-100">{t('chatTheme')}</h3>
-          <button className="btn-ghost !px-2" onClick={onClose}>✕</button>
+          <button className="btn-ghost !px-2" onClick={onClose} aria-label="close"><Icon name="close" size={18}/></button>
         </div>
 
         {/* live preview */}
@@ -479,9 +480,11 @@ export default function Chat() {
   const filteredConvs = convs.filter(c => !convFilter || (c.title || '').toLowerCase().includes(convFilter.toLowerCase()));
   const typingInConv = [...typingUsers.entries()].filter(([k]) => k.startsWith(String(activeId) + ':')).map(([, v]) => v);
 
-  const statusText = activeConv?.isGroup ? t('communityChat') :
+  const statusEl = activeConv?.isGroup ? t('communityChat') :
     typingInConv.length ? typingInConv.join(', ') :
-    (activeConv?.otherOnline ?? onlineUsers.has(activeConv?.otherUserId)) ? `🟢 ${t('online')}` : `⚪ ${t('offline')}`;
+    (activeConv?.otherOnline ?? onlineUsers.has(activeConv?.otherUserId))
+      ? <span className="inline-flex items-center gap-1"><Icon name="circle" size={8}/> {t('online')}</span>
+      : <span className="inline-flex items-center gap-1 opacity-60"><Icon name="circle" size={8}/> {t('offline')}</span>;
 
   // ---------- sidebar ----------
   const sidebar = (
@@ -492,10 +495,10 @@ export default function Chat() {
           <div className="text-sm font-bold truncate" style={{ color: V['--wa-text'] }}>{user?.fullName || user?.username}</div>
           <div className="text-[10px]" style={{ color: V['--wa-sub'] }}>{user?.role || ''}</div>
         </div>
-        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => setThemeOpen(true)} title={t('chatTheme')}>🎨</button>
-        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={toggleSound} title={soundOn ? t('soundOff') : t('soundOn')}>{soundOn ? '🔔' : '🔕'}</button>
-        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={toggleMute} title={muted ? t('unmute') : t('mute')}>{muted ? '🔇' : '🔊'}</button>
-        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => setShowNewChat(o => !o)} title={t('newChat')}>✏️</button>
+        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => setThemeOpen(true)} title={t('chatTheme')}><Icon name='palette' size={17}/></button>
+        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={toggleSound} title={soundOn ? t('soundOff') : t('soundOn')}>{soundOn ? <Icon name='soundOn' size={17}/> : <Icon name='soundOff' size={17}/>}</button>
+        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={toggleMute} title={muted ? t('unmute') : t('mute')}>{muted ? <Icon name='soundOff' size={17}/> : <Icon name='soundOn' size={17}/>}</button>
+        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => setShowNewChat(o => !o)} title={t('newChat')}><Icon name='edit' size={16}/></button>
       </div>
 
       {showNewChat && (
@@ -518,7 +521,7 @@ export default function Chat() {
       )}
 
       <div className="wa-search">
-        <span>🔍</span>
+        <Icon name='search' size={15} className='shrink-0'/>
         <input placeholder={t('search')} value={convFilter} onChange={e => setConvFilter(e.target.value)} style={{ color: V['--wa-text'] }} />
       </div>
 
@@ -530,15 +533,15 @@ export default function Chat() {
           const online = c.isGroup ? null : c.otherOnline ?? onlineUsers.has(c.otherUserId);
           return (
             <button key={c.conversationId} onClick={() => selectConv(c.conversationId)} className={`wa-conv ${active ? 'active' : ''}`}>
-              <span className="wa-avatar" style={{ background: c.isGroup ? 'linear-gradient(135deg,#f59e0b,#ef4444)' : V['--wa-accent'], color: '#fff' }}>
-                {c.isGroup ? '👥' : initials(c.otherName || c.title)}
+              <span className="wa-avatar" style={{ background: V['--wa-accent'], color: '#fff' }}>
+                {c.isGroup ? <Icon name='users' size={18}/> : initials(c.otherName || c.title)}
                 {!c.isGroup && online && <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2" style={{ borderColor: V['--wa-composer'] }} />}
               </span>
               <span className="meta">
                 <span className="name"><span className="truncate">{c.title}</span><span className="time">{c.lastMessage ? fmtListTime(c.lastMessage.at) : ''}</span></span>
                 <span className="prev">
                   <span className="truncate flex items-center gap-1">
-                    {c.muted && <span title={t('muted')}>🔕</span>}
+                    {c.muted && <span title={t('muted')} className='inline-flex'><Icon name='bellOff' size={13}/></span>}
                     {c.lastMessage?.preview || '—'}
                   </span>
                   {c.unread > 0 && <span className="wa-badge">{c.unread > 99 ? '99+' : c.unread}</span>}
@@ -561,22 +564,22 @@ export default function Chat() {
     <div className={`wa-pane ${mobileView === 'chat' ? 'on' : ''}`} style={{ background: V['--wa-bg'] }}>
       {/* header */}
       <div className="wa-chathead relative">
-        <button className="wa-cbtn md:hidden !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => setMobileView('list')}>←</button>
-        <span className="wa-avatar relative" style={{ background: activeConv.isGroup ? 'linear-gradient(135deg,#f59e0b,#ef4444)' : V['--wa-accent'], color: '#fff' }}>
-          {activeConv.isGroup ? '👥' : initials(activeConv.otherName || activeConv.title)}
+        <button className="wa-cbtn md:hidden !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => setMobileView('list')} aria-label="back"><Icon name="reply" size={17} className="rotate-180"/></button>
+        <span className="wa-avatar relative" style={{ background: V['--wa-accent'], color: '#fff' }}>
+          {activeConv.isGroup ? <Icon name='users' size={18}/> : initials(activeConv.otherName || activeConv.title)}
           {!activeConv.isGroup && (activeConv.otherOnline ?? onlineUsers.has(activeConv.otherUserId)) &&
             <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2" style={{ borderColor: V['--wa-header'] }} />}
         </span>
         <div className="who">
           <div className="n truncate">{activeConv.title}</div>
-          <div className={`s ${typingInConv.length ? 'italic' : ''}`} style={{ color: typingInConv.length ? V['--wa-accent'] : V['--wa-sub'] }}>{statusText}</div>
+          <div className={`s ${typingInConv.length ? 'italic' : ''}`} style={{ color: typingInConv.length ? V['--wa-accent'] : V['--wa-sub'] }}>{statusEl}</div>
         </div>
-        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => { setSearchOpen(o => !o); setSearchResults(null); }} title={t('searchMessages')}>🔍</button>
+        <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => { setSearchOpen(o => !o); setSearchResults(null); }} title={t('searchMessages')}><Icon name='search' size={17}/></button>
         <button className="wa-cbtn !w-8 !h-8" style={{ color: V['--wa-sub'] }} onClick={() => setConvMenu(o => !o)} title="⋮">⋮</button>
         {convMenu && (
           <div className="wa-menu">
-            <button onClick={toggleConvMute}>{activeConv.muted ? '🔔' : '🔕'} {activeConv.muted ? t('unmute') : t('mute')}</button>
-            <button onClick={() => { setConvMenu(false); setThemeOpen(true); }}>🎨 {t('chatTheme')}</button>
+            <button onClick={toggleConvMute}>{activeConv.muted ? <Icon name='notifications' size={14}/> : <Icon name='bellOff' size={14}/>} {activeConv.muted ? t('unmute') : t('mute')}</button>
+            <button onClick={() => { setConvMenu(false); setThemeOpen(true); }} className='inline-flex items-center gap-1.5'><Icon name='palette' size={14}/> {t('chatTheme')}</button>
             {!activeConv.isGroup && (
               <div className="px-3 py-1.5">
                 <div className="text-[10px] font-semibold uppercase" style={{ color: V['--wa-sub'] }}>{t('themeForThisChat')}</div>
@@ -631,11 +634,11 @@ export default function Chat() {
                 <div className={`wa-bubble ${mine ? 'out' : 'in'}`} style={mine ? { background: V['--wa-out'], color: V['--wa-text'] } : { background: V['--wa-in'], color: V['--wa-text'] }}>
                   {/* hover actions */}
                   <div className={`wa-actions ${menuFor === m.id || reactFor === m.id ? 'open' : ''} ${mine ? 'left-0' : 'right-0'}`}>
-                    <button onClick={() => setReactFor(reactFor === m.id ? null : m.id)} title="😊">😊</button>
-                    <button onClick={() => { setReplyTo(m); setEditing(null); }} title={t('reply')}>↩</button>
-                    {mine && <button onClick={() => { setEditing(m); setReplyTo(null); }} title={t('edit')}>✏️</button>}
-                    <button onClick={() => copyMsg(m)} title={t('copy')}>📋</button>
-                    <button onClick={() => setMenuFor(menuFor === m.id ? null : m.id)} title="⋯">⋯</button>
+                    <button onClick={() => setReactFor(reactFor === m.id ? null : m.id)} title='react'><Icon name='react' size={15}/></button>
+                    <button onClick={() => { setReplyTo(m); setEditing(null); }} title={t('reply')}><Icon name='reply' size={15}/></button>
+                    {mine && <button onClick={() => { setEditing(m); setReplyTo(null); }} title={t('edit')}><Icon name='edit' size={15}/></button>}
+                    <button onClick={() => copyMsg(m)} title={t('copy')}><Icon name='copy' size={15}/></button>
+                    <button onClick={() => setMenuFor(menuFor === m.id ? null : m.id)} title='more'><Icon name='more' size={16}/></button>
                   </div>
                   {reactFor === m.id && (
                     <div className={`absolute -top-9 ${mine ? 'left-0' : 'right-0'} z-30 flex gap-0.5 bg-white dark:bg-slate-800 rounded-full shadow-lg border border-slate-200 dark:border-slate-700 px-1.5 py-1`}>
@@ -644,9 +647,9 @@ export default function Chat() {
                   )}
                   {menuFor === m.id && (
                     <div className="absolute top-7 z-30 card !p-1.5 !rounded-xl shadow-lg text-xs whitespace-nowrap bg-white dark:bg-slate-800">
-                      <button className="block w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" onClick={() => doDelete(m, 'me')}>🗑 {t('deleteForMe')}</button>
+                      <button className="block w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" onClick={() => doDelete(m, 'me')}><Icon name='delete' size={14} className='inline-block align-[-2px] mr-1'/>{t('deleteForMe')}</button>
                       {(mine || isAdmin) && !m.deletedForEveryone && (
-                        <button className="block w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 text-red-500" onClick={() => doDelete(m, 'everyone')}>🗑 {t('deleteForEveryone')}</button>
+                        <button className="block w-full text-left px-3 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 text-red-500" onClick={() => doDelete(m, 'everyone')}><Icon name='delete' size={14} className='inline-block align-[-2px] mr-1'/>{t('deleteForEveryone')}</button>
                       )}
                     </div>
                   )}
@@ -660,7 +663,7 @@ export default function Chat() {
                   )}
 
                   {m.deletedForEveryone ? (
-                    <div className="italic text-xs opacity-70">🚫 {t('messageDeleted')}{m.deletedByName ? ` · ${m.deletedByName}` : ''}</div>
+                    <div className="italic text-xs opacity-70 inline-flex items-center gap-1"><Icon name='blocked' size={13}/> {t('messageDeleted')}{m.deletedByName ? ` · ${m.deletedByName}` : ''}</div>
                   ) : editing?.id === m.id ? (
                     <div className="space-y-1">
                       <textarea className="wa-composer !p-0 !bg-transparent" style={{ color: V['--wa-text'] }} value={editing.body || ''} autoFocus rows={2}
@@ -680,7 +683,7 @@ export default function Chat() {
                       {m.file && !isImage(m.file.mime) && (
                         <a href={m.file.url} target="_blank" rel="noreferrer"
                           className="mt-1 flex items-center gap-2 rounded-lg px-2.5 py-2 text-xs bg-black/5">
-                          <span>📄</span><span className="truncate max-w-[180px]">{m.file.name || t('fileSent')}</span>
+                          <Icon name='file' size={15} className='shrink-0'/><span className="truncate max-w-[180px]">{m.file.name || t('fileSent')}</span>
                         </a>
                       )}
                     </>
@@ -701,7 +704,7 @@ export default function Chat() {
                     <span>{fmtTime(m.createdAt)}</span>
                     {mine && !activeConv.isGroup && !m.deletedForEveryone && (
                       <span title={m.readAt ? t('read') : m.deliveredAt ? t('delivered') : t('sent')}>
-                        {m.readAt ? '✓✓' : m.deliveredAt ? '✓✓' : '✓'}
+                        {m.readAt || m.deliveredAt ? <Icon name='checkCheck' size={14} className='inline-block align-[-2px]'/> : <Icon name='check' size={14} className='inline-block align-[-2px]'/>}
                       </span>
                     )}
                   </div>
@@ -721,25 +724,25 @@ export default function Chat() {
         <div className="px-3 py-1.5 border-t flex items-center gap-2" style={{ background: V['--wa-composer'], borderColor: 'rgba(0,0,0,.06)' }}>
           <div className="flex-1 border-l-2 pl-2 text-xs" style={{ borderColor: V['--wa-accent'], color: V['--wa-sub'] }}>
             <div className="font-semibold" style={{ color: V['--wa-accent'] }}>{replyTo.senderName}</div>
-            <div className="truncate">{(replyTo.body || '📎').slice(0, 80)}</div>
+            <div className="truncate">{(replyTo.body || '').slice(0, 80)}</div>
           </div>
-          <button className="wa-cbtn !w-7 !h-7" style={{ color: V['--wa-sub'] }} onClick={() => setReplyTo(null)}>✕</button>
+          <button className="wa-cbtn !w-7 !h-7" style={{ color: V['--wa-sub'] }} onClick={() => setReplyTo(null)}><Icon name='close' size={14}/></button>
         </div>
       )}
 
       {/* file preview */}
       {pendingFile && (
         <div className="px-3 py-2 border-t flex items-center gap-2" style={{ background: V['--wa-composer'], borderColor: 'rgba(0,0,0,.06)' }}>
-          {isImage(pendingFile.mime) ? <img src={pendingFile.url} className="h-12 w-12 object-cover rounded-lg" alt="" /> : <span className="text-2xl">📄</span>}
+          {isImage(pendingFile.mime) ? <img src={pendingFile.url} className="h-12 w-12 object-cover rounded-lg" alt="" /> : <Icon name='file' size={28} className='shrink-0'/>}
           <span className="text-xs flex-1 truncate" style={{ color: V['--wa-sub'] }}>{pendingFile.name}</span>
-          <button className="wa-cbtn !w-7 !h-7" style={{ color: V['--wa-sub'] }} onClick={() => setPendingFile(null)}>✕</button>
+          <button className="wa-cbtn !w-7 !h-7" style={{ color: V['--wa-sub'] }} onClick={() => setPendingFile(null)}><Icon name='close' size={14}/></button>
         </div>
       )}
 
       {/* composer */}
       <div className="wa-composer">
         <div className="relative">
-          <button className="wa-cbtn !w-9 !h-9 !text-xl" style={{ color: V['--wa-sub'] }} onClick={() => setEmojiOpen(o => !o)}>😀</button>
+          <button className="wa-cbtn !w-9 !h-9 !text-xl" style={{ color: V['--wa-sub'] }} onClick={() => setEmojiOpen(o => !o)} title='emoji'><Icon name='react' size={20}/></button>
           {emojiOpen && (
             <div className="wa-emoji-panel">
               {EMOJIS.map(e => (
@@ -750,7 +753,7 @@ export default function Chat() {
         </div>
         <input ref={fileRef} type="file" accept={ATTACH_ACCEPT} className="hidden" onChange={e => e.target.files?.[0] && pickFile(e.target.files[0])} />
         <button className="wa-cbtn !w-9 !h-9 !text-xl" disabled={uploading} onClick={() => fileRef.current?.click()} title={t('attachFile')} style={{ color: V['--wa-sub'] }}>
-          {uploading ? '⏳' : '📎'}
+          {uploading ? <Icon name='spinner' size={17} className='animate-spin'/> : <Icon name='attach' size={18}/>}
         </button>
         <div className="box">
           <textarea
@@ -772,7 +775,7 @@ export default function Chat() {
           />
         </div>
         <button className="wa-cbtn send !w-10 !h-10 !text-lg" disabled={sending || uploading || (!editing && !text.trim() && !pendingFile?.fileId)} onClick={send}>
-          {sending ? '…' : editing ? '✓' : '➤'}
+          {sending ? '…' : editing ? <Icon name='check' size={17}/> : <Icon name='send' size={17}/>}
         </button>
       </div>
     </div>
